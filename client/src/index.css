@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 21 100% 98%;
+    --foreground: 215 25% 23%;
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 23%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 23%;
+    --primary: 16 100% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 21 100% 66%;
+    --secondary-foreground: 215 25% 23%;
+    --muted: 215 14% 90%;
+    --muted-foreground: 215 14% 47%;
+    --accent: 0 79% 57%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 79% 57%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 215 14% 90%;
+    --input: 215 14% 90%;
+    --ring: 16 100% 60%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 215 30% 8%;
+    --foreground: 210 20% 95%;
+    --card: 215 25% 12%;
+    --card-foreground: 210 20% 95%;
+    --popover: 215 25% 12%;
+    --popover-foreground: 210 20% 95%;
+    --primary: 215 85% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 215 25% 16%;
+    --secondary-foreground: 210 20% 95%;
+    --muted: 215 25% 16%;
+    --muted-foreground: 215 15% 60%;
+    --accent: 200 80% 55%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 215 25% 18%;
+    --input: 215 25% 18%;
+    --ring: 215 85% 60%;
+    
+    --gradient-primary: linear-gradient(135deg, hsl(215 85% 60%), hsl(200 80% 55%));
+    --gradient-subtle: linear-gradient(180deg, hsl(215 30% 8%), hsl(215 25% 12%));
+    --shadow-elegant: 0 10px 40px -15px hsl(215 85% 60% / 0.3);
+    --shadow-hover: 0 20px 60px -20px hsl(215 85% 60% / 0.4);
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
