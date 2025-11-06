@@ -92,7 +92,7 @@ func server() {
 		email := url.QueryEscape(user.Email)
 		name := url.QueryEscape(user.Name)
 		profilePic := url.QueryEscape(user.AvatarURL)
-		redirectURL := fmt.Sprintf("http://localhost:5173?email=%s&name=%s&profilePic=%s", email, name, profilePic)
+		redirectURL := fmt.Sprintf("http://localhost:5173/dashboard?email=%s&name=%s&profilePic=%s", email, name, profilePic)
 		return c.Redirect(redirectURL, fiber.StatusTemporaryRedirect)
 	})
 
@@ -123,7 +123,6 @@ func server() {
 		if err != nil {
 			return c.Status(fiber.StatusInternalServerError).SendString(err.Error())
 		}
-		usplash_api := os.Getenv("UNSPLASH_API")
 		url := fmt.Sprintf("https://api.unsplash.com/search/photos/?client_id=%v&query=%v&page=%v", os.Getenv("UNSPLASH_ACCESS_KEY"), term, page_no)
 		res, err := http.Get(url)
 		if err != nil {
@@ -163,8 +162,7 @@ func server() {
 		}
 		term = strings.ToLower(strings.TrimSpace(term))
 		page := c.QueryInt("page", 1)
-		usplash_api := os.Getenv("UNSPLASH_API")
-		        url := fmt.Sprintf("https://api.unsplash.com/search/photos/?client_id=%v&query=%v&page=%v", os.Getenv("UNSPLASH_ACCESS_KEY"), term, page)
+		url := fmt.Sprintf("https://api.unsplash.com/search/photos/?client_id=%v&query=%v&page=%v", os.Getenv("UNSPLASH_ACCESS_KEY"), term, page)
 		res, err := http.Get(url)
 		if err != nil {
 			return c.Status(fiber.StatusInternalServerError).SendString(err.Error())

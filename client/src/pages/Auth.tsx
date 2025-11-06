@@ -16,7 +16,7 @@ const Auth = () => {
   const handleGuestSignIn = () => {
     localStorage.setItem("user", JSON.stringify({ email: "guest@example.com", name: "Guest User" }));
     toast.success("Welcome! You're now signed in as a Guest.");
-    navigate("/");
+    navigate("/game");
   };
 
 

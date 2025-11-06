@@ -8,7 +8,18 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 5173,
+    fs: {
+      allow: [".."],
+    },
+    proxy: {
+      '/game': {
+        target: 'http://localhost:5173/src',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/game/, '/game'),
+      },
+    },
   },
+  assetsInclude: ["**/*.wasm"],
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
   resolve: {
     alias: {

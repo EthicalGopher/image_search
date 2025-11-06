@@ -2,65 +2,142 @@
 
 This is a full-stack image search application that allows users to search for images, manage their search history, and authenticate using various OAuth providers. The application consists of a Go Fiber backend and a React TypeScript frontend.
 
-## Table of Contents
+## About The Project
 
-- [Project Overview](#project-overview)
-- [Technologies Used](#technologies-used)
-- [Setup Instructions](#setup-instructions)
-- [Client-side Documentation](#client-side-documentation)
-- [Server-side Documentation](#server-side-documentation)
+This project is a demonstration of a modern full-stack web application. It showcases how to build a secure and scalable application with a Go backend and a React frontend. The application allows users to search for images using the Unsplash API, view their search history, and see the top searches across all users. It also includes a guest mode for users who do not want to authenticate.
 
-## Project Overview
+### Built With
 
-The application provides the following features:
+*   **Frontend:**
+    *   [React](https://reactjs.org/)
+    *   [TypeScript](https://www.typescriptlang.org/)
+    *   [Vite](https://vitejs.dev/)
+    *   [Tailwind CSS](https://tailwindcss.com/)
+    *   [Shadcn UI](https://ui.shadcn.com/)
+*   **Backend:**
+    *   [Go](https://golang.org/)
+    *   [Fiber](https://gofiber.io/)
+    *   [MongoDB](https://www.mongodb.com/)
+    *   [Goth](https://github.com/markbates/goth)
 
--   **User Authentication**: Secure login via Google, GitHub, and Facebook OAuth.
--   **Image Search**: Search for images using the Unsplash API.
--   **Search History**: Authenticated users can view and clear their search history.
--   **Top Searches**: View the most popular search terms across all users.
--   **Guest Search**: Guests can search for random images without authentication.
+## Getting Started
 
-## Technologies Used
+To get a local copy up and running follow these simple example steps.
 
-### Frontend (Client)
+### Prerequisites
 
--   **React**: A JavaScript library for building user interfaces.
--   **TypeScript**: A typed superset of JavaScript that compiles to plain JavaScript.
--   **Vite**: A fast build tool that provides an instant development server.
--   **Tailwind CSS**: A utility-first CSS framework for rapidly building custom designs.
--   **Shadcn UI**: A collection of reusable components built with Radix UI and Tailwind CSS.
--   **React Router DOM**: Declarative routing for React.
--   **Axios**: Promise-based HTTP client for the browser and Node.js.
--   **@tanstack/react-query**: Powerful asynchronous state management for React.
+*   **Go:** Make sure you have Go (version 1.21 or higher) installed. You can download it from [here](https://golang.org/dl/).
+*   **Node.js:** Make sure you have Node.js (version 18 or higher) installed. You can download it from [here](https://nodejs.org/).
+*   **MongoDB:** Make sure you have a MongoDB instance running. You can use a local instance or a cloud-based service like [MongoDB Atlas](https://www.mongodb.com/cloud/atlas).
 
-### Backend (Server)
+### Installation
 
--   **Go**: A statically typed, compiled programming language.
--   **Fiber**: An Express-inspired web framework built on top of Fasthttp.
--   **MongoDB**: A NoSQL document database for storing user search history.
--   **Goth**: A Go package for OAuth authentication.
--   **Unsplash API**: For fetching image data.
-
-## Setup Instructions
-
-To get the application up and running, you need to set up both the client and the server.
-
-1.  **Clone the repository:**
-    ```bash
-    git clone <repository_url>
-    cd image_search
+1.  **Clone the repo**
+    ```sh
+    git clone https://github.com/your_username_/image_search.git
     ```
+2.  **Set up the backend**
+    *   Navigate to the `server` directory:
+        ```sh
+        cd image_search/server
+        ```
+    *   Create a `.env` file and add the following environment variables:
+        ```
+        MONGODB_URI="your_mongodb_connection_string"
+        UNSPLASH_ACCESS_KEY="your_unsplash_access_key"
+        GOOGLE_CLIENT_ID="your_google_client_id"
+        GOOGLE_CLIENT_SECRET="your_google_client_secret"
+        GITHUB_CLIENT_ID="your_github_client_id"
+        GITHUB_CLIENT_SECRET="your_github_client_secret"
+        FACEBOOK_CLIENT_ID="your_facebook_client_id"
+        FACEBOOK_CLIENT_SECRET="your_facebook_client_secret"
+        ```
+    *   Install the Go modules:
+        ```sh
+        go mod tidy
+        ```
+    *   Run the backend server:
+        ```sh
+        go run main.go
+        ```
+3.  **Set up the frontend**
+    *   Navigate to the `client` directory:
+        ```sh
+        cd ../client
+        ```
+    *   Install the npm packages:
+        ```sh
+        npm install
+        ```
+    *   Run the frontend development server:
+        ```sh
+        npm run dev
+        ```
 
-2.  **Set up the Server:**
-    Follow the detailed instructions in the [Server README](./server/README.md) to configure environment variables (including Unsplash API key and OAuth credentials) and run the backend server.
+## Features
 
-3.  **Set up the Client:**
-    Follow the detailed instructions in the [Client README](./client/README.md) to configure environment variables and run the frontend application.
+*   **User Authentication:** Secure login via Google, GitHub, and Facebook OAuth.
+*   **Image Search:** Search for images using the Unsplash API.
+*   **Search History:** Authenticated users can view and clear their search history.
+*   **Top Searches:** View the most popular search terms across all users.
+*   **Guest Search:** Guests can search for random images without authentication.
+*   **Game:** A simple game for authenticated users.
 
-## Client-side Documentation
+## Available Scripts
 
-For detailed information on the frontend application, including its setup, scripts, and folder structure, please refer to the [Client README](./client/README.md).
+### Frontend
 
-## Server-side Documentation
+*   `npm run dev`: Runs the app in the development mode.
+*   `npm run build`: Builds the app for production to the `dist` folder.
+*   `npm run lint`: Lints the code using ESLint.
+*   `npm run preview`: Serves the production build locally.
 
-For detailed information on the backend server, including its setup, API endpoints, and folder structure, please refer to the [Server README](./server/README.md).
+### Backend
+
+*   `go run main.go`: Runs the backend server.
+*   `go build`: Builds the backend server.
+
+## Project Structure
+
+```
+.
+├── client
+│   ├── public
+│   ├── src
+│   │   ├── components
+│   │   ├── game
+│   │   ├── hooks
+│   │   ├── lib
+│   │   └── pages
+│   ├── Dockerfile
+│   ├── package.json
+│   └── vite.config.ts
+├── server
+│   ├── database
+│   ├── datatypes
+│   ├── .env
+│   ├── Dockerfile
+│   ├── go.mod
+│   └── main.go
+└── README.md
+```
+
+## Contributing
+
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1.  Fork the Project
+2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4.  Push to the Branch (`git push origin feature/AmazingFeature`)
+5.  Open a Pull Request
+
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+## Contact
+
+Your Name - [@your_twitter](https://twitter.com/your_twitter) - email@example.com
+
+Project Link: [https://github.com/your_username_/image_search](https://github.com/your_username_/image_search)

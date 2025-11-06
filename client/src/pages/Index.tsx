@@ -49,7 +49,7 @@ const Index = () => {
         }
         userLoggedIn = true;
       } else {
-        navigate("/auth");
+        navigate("/");
       }
     }
 
@@ -160,7 +160,7 @@ const Index = () => {
       localStorage.removeItem("user");
       localStorage.setItem("isLoggedIn", "false");
       toast.success("You have been signed out.");
-      navigate("/auth");
+      navigate("/");
     } catch (error) {
       console.error("Logout failed:", error);
       toast.error("Logout failed. Please try again.");
