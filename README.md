@@ -1,143 +1,214 @@
 # Image Search Application
 
-This is a full-stack image search application that allows users to search for images, manage their search history, and authenticate using various OAuth providers. The application consists of a Go Fiber backend and a React TypeScript frontend.
+This is a full-stack image search application with OAuth integration and Unsplash API integration.
 
-## About The Project
+## Table of Contents
 
-This project is a demonstration of a modern full-stack web application. It showcases how to build a secure and scalable application with a Go backend and a React frontend. The application allows users to search for images using the Unsplash API, view their search history, and see the top searches across all users. It also includes a guest mode for users who do not want to authenticate.
-
-### Built With
-
-*   **Frontend:**
-    *   [React](https://reactjs.org/)
-    *   [TypeScript](https://www.typescriptlang.org/)
-    *   [Vite](https://vitejs.dev/)
-    *   [Tailwind CSS](https://tailwindcss.com/)
-    *   [Shadcn UI](https://ui.shadcn.com/)
-*   **Backend:**
-    *   [Go](https://golang.org/)
-    *   [Fiber](https://gofiber.io/)
-    *   [MongoDB](https://www.mongodb.com/)
-    *   [Goth](https://github.com/markbates/goth)
-
-## Getting Started
-
-To get a local copy up and running follow these simple example steps.
-
-### Prerequisites
-
-*   **Go:** Make sure you have Go (version 1.21 or higher) installed. You can download it from [here](https://golang.org/dl/).
-*   **Node.js:** Make sure you have Node.js (version 18 or higher) installed. You can download it from [here](https://nodejs.org/).
-*   **MongoDB:** Make sure you have a MongoDB instance running. You can use a local instance or a cloud-based service like [MongoDB Atlas](https://www.mongodb.com/cloud/atlas).
-
-### Installation
-
-1.  **Clone the repo**
-    ```sh
-    git clone https://github.com/your_username_/image_search.git
-    ```
-2.  **Set up the backend**
-    *   Navigate to the `server` directory:
-        ```sh
-        cd image_search/server
-        ```
-    *   Create a `.env` file and add the following environment variables:
-        ```
-        MONGODB_URI="your_mongodb_connection_string"
-        UNSPLASH_ACCESS_KEY="your_unsplash_access_key"
-        GOOGLE_CLIENT_ID="your_google_client_id"
-        GOOGLE_CLIENT_SECRET="your_google_client_secret"
-        GITHUB_CLIENT_ID="your_github_client_id"
-        GITHUB_CLIENT_SECRET="your_github_client_secret"
-        FACEBOOK_CLIENT_ID="your_facebook_client_id"
-        FACEBOOK_CLIENT_SECRET="your_facebook_client_secret"
-        ```
-    *   Install the Go modules:
-        ```sh
-        go mod tidy
-        ```
-    *   Run the backend server:
-        ```sh
-        go run main.go
-        ```
-3.  **Set up the frontend**
-    *   Navigate to the `client` directory:
-        ```sh
-        cd ../client
-        ```
-    *   Install the npm packages:
-        ```sh
-        npm install
-        ```
-    *   Run the frontend development server:
-        ```sh
-        npm run dev
-        ```
+- [Features](#features)
+- [Setup](#setup)
+  - [Prerequisites](#prerequisites)
+  - [Environment Variables](#environment-variables)
+  - [Installation](#installation)
+- [Folder Structure](#folder-structure)
+- [API Endpoints](#api-endpoints)
+- [Visual Proof](#visual-proof)
 
 ## Features
 
-*   **User Authentication:** Secure login via Google, GitHub, and Facebook OAuth.
-*   **Image Search:** Search for images using the Unsplash API.
-*   **Search History:** Authenticated users can view and clear their search history.
-*   **Top Searches:** View the most popular search terms across all users.
-*   **Guest Search:** Guests can search for random images without authentication.
-*   **Game:** A simple game for authenticated users.
+-   **User Authentication:** Secure login via Google, GitHub, and Facebook OAuth.
+-   **Image Search:** Search for high-resolution images using the Unsplash API.
+-   **Guest Access with Verification Game:** Guests can access after completing a simple verification game.
+-   **Top Searches:** View a dynamic list of the most frequently searched terms across all users.
+-   **Personal Search History:** Authenticated users can view and clear their past search queries.
+-   **Responsive Design:** Optimized user experience across various devices (desktop, tablet, mobile).
+-   **Dockerization:** Containerized client and server applications for easy setup, deployment, and scalability using Docker and Docker Compose.
 
-## Available Scripts
+## Setup
 
-### Frontend
+### Prerequisites
 
-*   `npm run dev`: Runs the app in the development mode.
-*   `npm run build`: Builds the app for production to the `dist` folder.
-*   `npm run lint`: Lints the code using ESLint.
-*   `npm run preview`: Serves the production build locally.
+- Node.js (for client-side)
+- Go (for server-side)
+- MongoDB (for database)
+- Docker (optional, for containerized deployment)
 
-### Backend
+### Environment Variables
 
-*   `go run main.go`: Runs the backend server.
-*   `go build`: Builds the backend server.
+**Server-side (`.env` in root directory):**
 
-## Project Structure
+Create a `.env` file in the root directory of the project with the following variables:
 
 ```
-.
-├── client
-│   ├── public
-│   ├── src
-│   │   ├── components
-│   │   ├── game
-│   │   ├── hooks
-│   │   ├── lib
-│   │   └── pages
-│   ├── Dockerfile
-│   ├── package.json
-│   └── vite.config.ts
-├── server
-│   ├── database
-│   ├── datatypes
+# Google OAuth
+GOOGLE_CLIENT_ID="YOUR_GOOGLE_CLIENT_ID"
+GOOGLE_CLIENT_SECRET="YOUR_GOOGLE_CLIENT_SECRET"
+
+# GitHub OAuth
+GITHUB_CLIENT_ID="YOUR_GITHUB_CLIENT_ID"
+GITHUB_CLIENT_SECRET="YOUR_GITHUB_CLIENT_SECRET"
+
+# Facebook OAuth
+FACEBOOK_CLIENT_ID="YOUR_FACEBOOK_CLIENT_ID"
+FACEBOOK_CLIENT_SECRET="YOUR_FACEBOOK_CLIENT_SECRET"
+
+# Unsplash API
+UNSPLASH_ACCESS_KEY="YOUR_UNSPLASH_ACCESS_KEY"
+
+# MongoDB URI
+MONGODB_URI="YOUR_MONGODB_CONNECTION_STRING"
+```
+
+**Client-side (`client/.env`):**
+
+Create a `.env` file inside the `client/` directory with the following variable:
+
+```
+VITE_SERVER_URL="http://localhost:8080"
+```
+
+This variable is used by the Vite development server to know where the backend API is running.
+
+### Installation
+
+1.  **Clone the repository:**
+
+    ```bash
+    git clone <repository_url>
+    cd image_search
+    ```
+
+2.  **Install client dependencies:**
+
+    ```bash
+    cd client
+    npm install
+    cd ..
+    ```
+
+3.  **Run the client:**
+
+    ```bash
+    cd client
+    npm run dev
+    cd ..
+    ```
+
+4.  **Run the server:**
+
+    ```bash
+    cd server
+    go mod tidy
+    go run main.go
+    cd ..
+    ```
+
+## Folder Structure
+
+```
+image_search/
+├── .env
+├── .gitignore
+├── docker-compose.yml
+├── README.md
+├── client/
 │   ├── .env
 │   ├── Dockerfile
-│   ├── go.mod
-│   └── main.go
-└── README.md
+│   ├── public/
+│   ├── src/
+│   │   ├── components/             # React components (e.g., SearchBar, ImageGrid)
+│   │   ├── game/                   # Game assets
+│   │   ├── hooks/                  # Custom React hooks
+│   │   ├── lib/                    # Utility functions
+│   │   └── pages/                  # Page components (e.g., Auth, Index)
+│   ├── package.json                # Client-side dependencies and scripts
+│   └── ... (other client files)
+└── server/
+    ├── Dockerfile
+    ├── go.mod
+    ├── go.sum
+    ├── main.go
+    ├── README.md
+    ├── database/
+    │   └── db.go
+    └── datatypes/
+        └── types.go
 ```
 
-## Contributing
+## Dockerization
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+This project includes `Dockerfile`s for both the client and server applications, allowing for containerized deployment using Docker.
 
-1.  Fork the Project
-2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4.  Push to the Branch (`git push origin feature/AmazingFeature`)
-5.  Open a Pull Request
+-   **`client/Dockerfile`**: This Dockerfile is used to build a Docker image for the React frontend application. It sets up the Node.js environment, installs dependencies, builds the client application, and serves it using a web server (e.g., Nginx or a simple static file server).
 
-## License
+-   **`server/Dockerfile`**: This Dockerfile is used to build a Docker image for the Go backend application. It sets up the Go environment, builds the Go executable, and runs the server application.
 
-Distributed under the MIT License. See `LICENSE` for more information.
+The `docker-compose.yml` file in the root directory orchestrates the build and deployment of both the client and server containers, along with a MongoDB service, for easy local development and deployment.
 
-## Contact
+## API Endpoints
 
-Your Name - [@your_twitter](https://twitter.com/your_twitter) - email@example.com
+Here are the main API endpoints provided by the server:
 
-Project Link: [https://github.com/your_username_/image_search](https://github.com/your_username_/image_search)
+### Authentication
+
+-   **GET `/api/auth/:provider`**
+    Initiates the OAuth flow for the specified provider (e.g., `google`, `github`, `facebook`).
+    ```bash
+    # Example for Google OAuth
+    curl -v http://localhost:8080/api/auth/google
+    ```
+
+-   **GET `/api/auth/:provider/callback`**
+    Callback URL for OAuth providers. Users are redirected here after successful authentication.
+    (This endpoint is handled internally by the OAuth flow and usually not called directly).
+
+-   **GET `/api/logout`**
+    Logs out the currently authenticated user.
+    ```bash
+    curl -v http://localhost:8080/api/logout
+    ```
+
+### Image Search
+
+-   **GET `/api/search-guest`**
+    Searches for random images for unauthenticated users.
+    ```bash
+    curl "http://localhost:8080/api/search-guest?page=1"
+    ```
+
+-   **GET `/api/search`**
+    Searches for images based on a `term` for authenticated users. Records the search term in history.
+    Requires authentication.
+    ```bash
+    curl --cookie "your_session_cookie" "http://localhost:8080/api/search?term=nature&page=1"
+    ```
+
+-   **GET `/api/top-searches`**
+    Retrieves a list of the most frequently searched terms across all users.
+    ```bash
+    curl http://localhost:8080/api/top-searches
+    ```
+
+### Search History
+
+-   **GET `/api/history`**
+    Retrieves the search history for the authenticated user.
+    Requires authentication.
+    ```bash
+    curl --cookie "your_session_cookie" http://localhost:8080/api/history
+    ```
+
+-   **POST `/api/history/clear`**
+    Clears the search history for the authenticated user.
+    Requires authentication.
+    ```bash
+    curl -X POST --cookie "your_session_cookie" http://localhost:8080/api/history/clear
+    ```
+
+## Visual Proof
+
+(Screenshots/GIFs demonstrating the application's functionality will be placed here.)
+
+-   **OAuth Login:** Visual of the login page with OAuth options.
+-   **Top Searches Banner:** Screenshot of the "Top Searches" section.
+-   **Search Results + Multi-select:** GIF/Screenshot showing image search results and the ability to multi-select images.
+-   **Search History Section:** Screenshot of the user's search history.

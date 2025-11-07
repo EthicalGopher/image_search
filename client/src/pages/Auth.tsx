@@ -5,9 +5,11 @@ import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { Search, Chrome, Github, Facebook, User } from "lucide-react";
 import { toast } from "sonner";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const Auth = () => {
   const navigate = useNavigate();
+  const isMobile = useIsMobile();
 
   const handleGoogleSignIn = () => {
     window.location.href = "http://localhost:8080/api/auth/google";
@@ -16,7 +18,7 @@ const Auth = () => {
   const handleGuestSignIn = () => {
     localStorage.setItem("user", JSON.stringify({ email: "guest@example.com", name: "Guest User" }));
     toast.success("Welcome! You're now signed in as a Guest.");
-    navigate("/game");
+    navigate(isMobile ? "/dashboard" : "/game");
   };
 
 
