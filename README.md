@@ -232,6 +232,8 @@ Here are the main API endpoints provided by the server:
 -   **Top Searches Banner:** 
 ![Top Searches](docs/topsearches.png)
 -   **Search Results + Multi-select:** 
-![Search Results](docs/screenshots/search-results.gif)
+![Search Results](docs/sceenview.gif)
 -   **Search History Section:**
 ![Search History](docs/history.png)
+-   **Guest Sign in auth**
+![Guest Signin](docs/guestauth.gif)
