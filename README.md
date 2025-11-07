@@ -102,6 +102,25 @@ This variable is used by the Vite development server to know where the backend A
     cd ..
     ```
 
+5.  **Dockerized Installation (Recommended for production/easy setup):**
+
+    Ensure you have Docker and Docker Compose installed.
+
+    1.  **Clone the repository:**
+
+        ```bash
+        git clone <repository_url>
+        cd image_search
+        ```
+
+    2.  **Build and run containers:**
+
+        ```bash
+        docker-compose up --build
+        ```
+
+    This command will build the Docker images for both the client and server, and then start all services defined in `docker-compose.yml`, including the MongoDB database.
+
 ## Folder Structure
 
 ```
