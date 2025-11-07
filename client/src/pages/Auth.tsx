@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
-import { Search, Chrome, Github, Facebook, User } from "lucide-react";
+import { Chrome, Github, Facebook, User } from "lucide-react";
 import { toast } from "sonner";
 import { useIsMobile } from "@/hooks/use-mobile";
-
+import logo from "/logo.png";
 const Auth = () => {
   const navigate = useNavigate();
   const isMobile = useIsMobile();
@@ -29,7 +29,7 @@ const Auth = () => {
       >
         <div className="text-center">
           <div className="inline-block bg-white/20 p-6 rounded-full mb-6">
-            <Search className="w-24 h-24 text-white" />
+            <img src={logo} className="h-96"/>
           </div>
           <h1 className="text-5xl font-bold mb-4">ImageSearch</h1>
           <p className="text-xl">Discover. Search. Inspire.</p>

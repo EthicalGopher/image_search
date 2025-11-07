@@ -35,7 +35,7 @@ const Index = () => {
       localStorage.setItem("user", JSON.stringify(user));
       localStorage.setItem("isLoggedIn", "true");
       setUser(user);
-      window.history.replaceState({}, document.title, "/");
+      window.history.replaceState({}, document.title, "/dashboard");
       userLoggedIn = true;
     } else {
       const storedUser = localStorage.getItem("user");
@@ -176,9 +176,7 @@ const Index = () => {
           {/* Top row for mobile: Logo and Profile Icon */}
           <div className="flex items-center justify-between sm:hidden mb-4">
             <div className="flex items-center gap-3">
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                ImageSearch
-              </h1>
+              <img src="/logo.png" className="h-10"/>
             </div>
             <div className="flex items-center gap-4">
               <DropdownMenu>
@@ -218,9 +216,7 @@ const Index = () => {
           {/* Main row for larger screens: Logo, Search Bar, Profile Icon */}
           <div className="hidden sm:flex items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                ImageSearch
-              </h1>
+              <img src="/logo.png" className="h-24"/>
             </div>
             <div className={`w-full sm:flex-1 max-w-xl sm:mx-auto ${localStorage.getItem("isLoggedIn") === "false" ? "pointer-events-none opacity-50" : ""}`}>
               <SearchBar

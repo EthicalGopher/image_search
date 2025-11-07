@@ -227,7 +227,11 @@ Here are the main API endpoints provided by the server:
 
 (Screenshots/GIFs demonstrating the application's functionality will be placed here.)
 
--   **OAuth Login:** Visual of the login page with OAuth options.
--   **Top Searches Banner:** Screenshot of the "Top Searches" section.
--   **Search Results + Multi-select:** GIF/Screenshot showing image search results and the ability to multi-select images.
--   **Search History Section:** Screenshot of the user's search history.
+-   **OAuth Login:**
+![OAuth Login](docs/auth.png)
+-   **Top Searches Banner:** 
+![Top Searches](docs/topsearches.png)
+-   **Search Results + Multi-select:** 
+![Search Results](docs/screenshots/search-results.gif)
+-   **Search History Section:**
+![Search History](docs/history.png)
