@@ -112,13 +112,13 @@ This variable is used by the Vite development server to know where the backend A
         git clone <repository_url>
         cd image_search
         ```
-
+  
     2.  **Build and run containers:**
 
         ```bash
         docker-compose up --build
         ```
-
+    add the environment variables for the backend to work
     This command will build the Docker images for both the client and server, and then start all services defined in `docker-compose.yml`, including the MongoDB database.
 
 ## Folder Structure
